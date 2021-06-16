@@ -2,9 +2,11 @@
 #define HEADER_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
+#include <SDL2/SDL.h> //on implémente le fichier h correspondant a la bibilio SDL
+#include <SDL2/SDL_image.h>
 
 #define TailleChaines 5
-#define TailleCar 20
+#define TailleCar 15
 
 //PROTOTYPES PROCEDURES & FONCTIONS
 

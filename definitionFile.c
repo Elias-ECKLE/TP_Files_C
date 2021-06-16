@@ -1,6 +1,63 @@
 #include "header.h"
 
 
+
+
+//PROCEDURES & FONCTIONS SDL 2-------------------------------------------------------------------------------------------------------------
+
+   //Init SDL---------------------------------------------------------------
+   /*
+void SDL_Initialisation(int window_width, int window_height){
+
+    //INIT SDL________________________________________________________________________________________________________________
+    if(SDL_Init(SDL_INIT_EVERYTHING)!=0){
+
+        SDL_Log("Unable to initialize : %s",SDL_GetError());
+        return 1; //il y a un probleme on retourne 1
+    }
+
+    else{ //creation de la fenetre : afficher fenetre graphique : 0,0 position coin gauche, ensuite taille et enfin l'afficher
+
+        pWindow=SDL_CreateWindow("Map du jeu graphique",10,50,window_width,window_height,SDL_WINDOW_OPENGL);
+        if(pWindow){ //creation du rendu : si la fenetre est bien crée alors
+            pRenderer=SDL_CreateRenderer(pWindow,-1,SDL_RENDERER_PRESENTVSYNC);
+        }
+    }
+
+
+
+}
+
+void SDL_InitImg(){
+        //initialisation des flags (comme au dessus) avec les img
+    int flags=IMG_INIT_JPG|IMG_INIT_PNG;
+        int initted=IMG_Init(flags);
+        if((initted&flags)!=flags){
+             SDL_Log("IMG_Init:Failed to init required jpg and png support !\n");
+             SDL_Log("IMG_Init: %s\n", IMG_GetError());
+             return 1;
+        }
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PROCEDURES & FONCTIONS FILE--------------------------------------------------------------------------------------------------------------
 //BUT : initialiser et allouer de la mémoire au pointeur file
 //ENTREE: Rien
 //SORTIE : mémoire allouée
@@ -130,4 +187,3 @@ int depiler(Pile* file){
     free(file);
     return 1;
 }
-

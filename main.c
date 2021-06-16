@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-int main()
+int main(int argc,char *argv[])
 {
     int n_i=0;
 
@@ -80,5 +80,23 @@ int main()
 
     return 0;
 }
+int depiler(Pile* file){
+    if (file == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
 
+    Element* elementDepile = file->p_Ending;
+
+    for(int n_i=0; n_i<TailleChaines; n_i++){
+        if (file != NULL && file->p_Ending != NULL)
+        {
+            file->p_Ending = elementDepile->p_before;
+            free(elementDepile);
+            file->n_taille--;
+        }
+    }
+    free(file);
+    return 1;
+}
 
