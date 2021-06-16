@@ -1,35 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define TailleChaines 5
-#define TailleCar 20
-
-
-typedef struct Element{
-
-    char* donnee;
-    struct Element* p_before;
-
-}Element;
-
-typedef struct Pile{
-    struct Element* p_beginning;
-    struct Element* p_Ending;
-
-    int n_taille;
-
-}Pile;
-
-
-Pile* init();
-int insertPileVide(Pile* file, char* donnee);
-void empiler(Pile* file, char* donnee);
-void depiler();
-void displayPile(Pile* file);
-int getTailleFile(Pile* file);
-void getFirstElement();
-void getLastElement();
-
-
+#include "header.h"
 
 
 int main()
@@ -72,17 +41,38 @@ int main()
 
 
 
+
     //Afficher la pile en partant du dernier élément entré --------------------------------------------;
     printf("Liste de la file :\n");
     displayPile(myFile);
 
 
-    //Afficher la taille de la file :
-    printf("\n La taille de la file est de : %d\n",getTailleFile(myFile));
+    //Afficher la taille de la file------------------------------------------------------------------- :
+    printf("\n La taille de la file est de : %d\n\n",getTailleFile(myFile));
+
+
+    //consulter le premier et dernier élément de la file------------------------------------------------:
+    char* donnee=NULL;
+    donnee=getFirstElement(myFile);
+    printf("Le premier element de la file est : %s\n",donnee);
+    donnee=getLastElement(myFile);
+    printf("Le dernier element de la file est : %s\n\n",donnee);
+
+
+
 
 
     //Dépiler (libérer la mémoire)--------------------------------------------------------------------
+    if(depiler(myFile)==1){
+        printf("File depilee OK\n");
+    }
 
+    //libérer les pointeurs restants----------------------------------------------------------------- :
+    free(donnee);
+    for(n_i=0; n_i<TailleChaines; n_i++){
+        free(tabChaines[n_i]);
+    }
+    free(tabChaines);
 
 
 
@@ -92,97 +82,3 @@ int main()
 }
 
 
-
-Pile* init(){
-
-    Pile* file=NULL;
-    file=(Pile*)malloc(sizeof(Pile*));
-
-    if(file){
-        file->p_beginning=NULL;
-        file->p_Ending=NULL;
-        file->n_taille=0;
-    }
-    return file;
-}
-
-int insertPileVide(Pile* file, char* donnee){
-    Element* elmt=NULL;
-    elmt=(Element*)malloc(sizeof(Element*));
-
-    if(file!=NULL && elmt!=NULL){
-
-        elmt->donnee=donnee;
-        elmt->p_before=NULL;
-        file->p_beginning=elmt;
-        file->p_Ending=elmt;
-        file->n_taille++;
-
-        return 1;
-    }
-    else{
-        return 0;
-    }
-}
-
-void empiler(Pile* file, char* donnee){
-
-    Element* elmt=NULL;
-    elmt=(Element*)malloc(sizeof(Element*));
-
-    if(file==NULL || elmt==NULL){
-        exit(EXIT_FAILURE);
-    }
-    else{
-        elmt->donnee=donnee;
-        // printf(" file->ending : %d\n",file->p_Ending);
-        elmt->p_before=file->p_Ending;
-        file->p_Ending=elmt;
-        file->n_taille++;
-        //printf(" elmt->donnee : %d\n",elmt->donnee);
-
-       // printf("elmt->p_before : %d\n",elmt->p_before);
-        //printf(" file->ending : %d\n",file->p_Ending);
-    }
-}
-
-
-void displayPile(Pile* file){
-
-    if(file!=NULL){
-        Element* elmtTemp=file->p_Ending;
-
-        while(elmtTemp!=NULL){
-            printf("%s\n", elmtTemp->donnee);
-            elmtTemp = elmtTemp->p_before;
-        }
-    }
-    else{
-        exit(EXIT_FAILURE);
-    }
-}
-
-
-int getTailleFile(Pile* file){
-    int n_taille;
-    n_taille=file->n_taille;
-
-    return n_taille;
-}
-/*
-void depiler(Pile* file){
-    if (file == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    Element* elementDepile = file->p_Ending;
-
-    if (file != NULL && file->p_Ending != NULL)
-    {
-        file->sommet = elementDepile->p_before;
-        free(elementDepile);
-        pile->taille--;
-    }
-}
-*/

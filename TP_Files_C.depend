@@ -1,5 +1,8 @@
 # depslib dependency file v1.0
-1623838622 source:c:\algoracine\algoracinef2\codeblockf2\exos\tp_files_c\tp_files_c\main.c
+1623842248 source:c:\algoracine\algoracinef2\codeblockf2\exos\tp_files_c\tp_files_c\main.c
 	<stdio.h>
 	<stdlib.h>
+	"header.h"
+
+1623842303 c:\algoracine\algoracinef2\codeblockf2\exos\tp_files_c\tp_files_c\header.h
 
