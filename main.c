@@ -68,10 +68,7 @@ int main()
     }
 
     //libérer les pointeurs restants----------------------------------------------------------------- :
-    free(donnee);
-    for(n_i=0; n_i<TailleChaines; n_i++){
-        free(tabChaines[n_i]);
-    }
+
     free(tabChaines);
 
 

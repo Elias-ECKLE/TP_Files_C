@@ -123,7 +123,7 @@ int depiler(Pile* file){
         if (file != NULL && file->p_Ending != NULL)
         {
             file->p_Ending = elementDepile->p_before;
-            free(elementDepile->donnee);
+            //free(elementDepile);
             file->n_taille--;
         }
     }
